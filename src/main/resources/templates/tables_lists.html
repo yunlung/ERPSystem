@@ -1,8 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <!-- menu profile quick info -->
-
+<header th:replace="common/head_left :: html" ></header>
 <!-- /menu profile quick info -->
-<div th:fragment="table_content">
     <!-- page content -->
     <div class="right_col" role="main">
         <div class="">
@@ -540,4 +539,5 @@
             </div>
         </div>
     </div>
-</div>
+<footer th:replace="common/foot :: html" ></footer>
+</html>
