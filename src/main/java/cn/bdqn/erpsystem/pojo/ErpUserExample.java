@@ -1,6 +1,7 @@
 package cn.bdqn.erpsystem.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ErpUserExample {
@@ -371,6 +372,126 @@ public class ErpUserExample {
 
         public Criteria andUTypeNotBetween(String value1, String value2) {
             addCriterion("u_type not between", value1, value2, "uType");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateIsNull() {
+            addCriterion("u_createdate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateIsNotNull() {
+            addCriterion("u_createdate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateEqualTo(Date value) {
+            addCriterion("u_createdate =", value, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateNotEqualTo(Date value) {
+            addCriterion("u_createdate <>", value, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateGreaterThan(Date value) {
+            addCriterion("u_createdate >", value, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateGreaterThanOrEqualTo(Date value) {
+            addCriterion("u_createdate >=", value, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateLessThan(Date value) {
+            addCriterion("u_createdate <", value, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateLessThanOrEqualTo(Date value) {
+            addCriterion("u_createdate <=", value, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateIn(List<Date> values) {
+            addCriterion("u_createdate in", values, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateNotIn(List<Date> values) {
+            addCriterion("u_createdate not in", values, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateBetween(Date value1, Date value2) {
+            addCriterion("u_createdate between", value1, value2, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUCreatedateNotBetween(Date value1, Date value2) {
+            addCriterion("u_createdate not between", value1, value2, "uCreatedate");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayIsNull() {
+            addCriterion("u_birthday is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayIsNotNull() {
+            addCriterion("u_birthday is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayEqualTo(Date value) {
+            addCriterion("u_birthday =", value, "uBirthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayNotEqualTo(Date value) {
+            addCriterion("u_birthday <>", value, "uBirthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayGreaterThan(Date value) {
+            addCriterion("u_birthday >", value, "uBirthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayGreaterThanOrEqualTo(Date value) {
+            addCriterion("u_birthday >=", value, "uBirthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayLessThan(Date value) {
+            addCriterion("u_birthday <", value, "uBirthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayLessThanOrEqualTo(Date value) {
+            addCriterion("u_birthday <=", value, "uBirthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayIn(List<Date> values) {
+            addCriterion("u_birthday in", values, "uBirthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayNotIn(List<Date> values) {
+            addCriterion("u_birthday not in", values, "uBirthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayBetween(Date value1, Date value2) {
+            addCriterion("u_birthday between", value1, value2, "uBirthday");
+            return (Criteria) this;
+        }
+
+        public Criteria andUBirthdayNotBetween(Date value1, Date value2) {
+            addCriterion("u_birthday not between", value1, value2, "uBirthday");
             return (Criteria) this;
         }
     }
