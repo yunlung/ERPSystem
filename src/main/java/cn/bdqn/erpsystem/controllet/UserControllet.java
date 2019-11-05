@@ -1,13 +1,19 @@
 package cn.bdqn.erpsystem.controllet;
 
+import cn.bdqn.erpsystem.service.user.UserService;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
+
 @Controller
 public class UserControllet {
+    @Resource
+    private UserService userService;
     @RequestMapping("/init")
     public String init(){
+        System.out.println(JSONArray.toJSONString(userService.selectByUserList()));
         return "tables_lists";
     }
 

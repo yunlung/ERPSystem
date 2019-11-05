@@ -8,5 +8,5 @@ spring:
     username: root
     password: root
 mybatis:
-  mapper-locations: classpath:/cn/bdqn/demo_springboot02/dao/*.xml
+  mapper-locations: classpath:/cn/bdqn/erpsystem/dao/*.xml
   type-aliases-package: cn.bdqn.erpsystem.pojo

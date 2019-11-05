@@ -3,8 +3,13 @@ package cn.bdqn.erpsystem.dao;
 import cn.bdqn.erpsystem.pojo.ErpUser;
 import cn.bdqn.erpsystem.pojo.ErpUserExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Mapper
+@Repository
 public interface ErpUserMapper {
     int countByExample(ErpUserExample example);
 
