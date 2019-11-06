@@ -15,6 +15,27 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<ErpUser> findAllErpUser() {
         ErpUserExample ue=new ErpUserExample();
-        return erpUserMapper.selectByExample(ue);
+        List<ErpUser> erpAll=erpUserMapper.selectByExample(ue);
+        for (ErpUser erpUst:erpAll) {
+            erpUst.setuType(formatType(erpUst.getuType()));
+        }
+        return erpAll;
     }
+
+    public String formatType(String type){
+        String returnType="";
+        switch (type){
+            case "1":
+                returnType= "系统管理员";
+                break;
+            case "2":
+                returnType= "部门主管";
+                break;
+            case "3":
+                returnType= "部门文员";
+                break;
+        }
+            return returnType;
+    }
+
 }

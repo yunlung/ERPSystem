@@ -1,5 +1,8 @@
 package cn.bdqn.erpsystem.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class ErpUser {
@@ -10,10 +13,19 @@ public class ErpUser {
     private String uPassword;
 
     private String uType;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date uCreatedate;
 
     private Date uBirthday;
+
+    private Integer uAge;
+
+    public Integer getuAge() {
+        Date date=new Date();
+        Integer uAge=date.getYear()-uBirthday.getYear();
+        return uAge;
+    }
+
 
     public Integer getuId() {
         return uId;
@@ -40,6 +52,7 @@ public class ErpUser {
     }
 
     public String getuType() {
+
         return uType;
     }
 
