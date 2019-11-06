@@ -15,7 +15,7 @@ public class UserControllet {
     @RequestMapping("/init")
     public String init(Model model){
         model.addAttribute("userList",userService.findAllErpUser());
-        return "tables_lists";
+        return "table_users";
     }
 
     @RequestMapping("/list")
