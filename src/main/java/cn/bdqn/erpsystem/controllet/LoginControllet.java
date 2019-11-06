@@ -10,4 +10,8 @@ public class LoginControllet {
     public String login(@Param("name") String name, @Param("password") String password){
         return "";
     }
+    @RequestMapping("/init")
+    public String init(){
+        return "index";
+    }
 }
