@@ -38,7 +38,7 @@ function checkpwd(){
 	var pwderror = $("#pwderror");
 	//密码正则表达式
 	pwderror.html("");
-	var regPwd =/^[A-Za-z0-9]{4,6}$/;
+	var regPwd =/^[A-Za-z0-9]{4,7}$/;
 	if(upwd==""){
 		pwderror.html("密码框不能为空！");
 		
@@ -82,13 +82,13 @@ $(document).ready(function(){
 function login() {
 	var tr=$("#myform").find(":input").serialize();
 	$.ajax({
-		"url":path+"/UserServlet"
+		"url":"/login"
 		,"type":"post"
 		,"data":tr
 		,"dataType":"json"
 		,"success":function(data){
-			if (data==1) {
-				location.href=path+"/homepage.jsp";
+			if (data!=null) {
+				location.href="/index";
 			}else if(data==0){
 				alert("未找到此用户！");
 			}else{

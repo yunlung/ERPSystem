@@ -22,6 +22,21 @@ public class UserServiceImpl implements UserService{
         return erpAll;
     }
 
+    @Override
+    public ErpUser login(String name, String password) {
+        ErpUserExample ue=new ErpUserExample();
+        ErpUserExample.Criteria criteria= ue.createCriteria();
+        criteria.andUNameEqualTo(name);
+        List<ErpUser> list=erpUserMapper.selectByExample(ue);
+        ErpUser eprUser=null;
+        for (ErpUser erp:list) {
+            if(erp.getuPassword().equals(password)){
+                eprUser=erp;
+            }
+        }
+        return eprUser;
+    }
+
     public String formatType(String type){
         String returnType="";
         switch (type){
