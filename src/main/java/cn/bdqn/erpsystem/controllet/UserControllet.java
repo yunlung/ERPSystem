@@ -9,17 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 @Controller
+@RequestMapping("user")
 public class UserControllet {
     @Resource
     private UserService userService;
-    @RequestMapping("/init")
+    @RequestMapping("/list")
     public String init(Model model){
         model.addAttribute("userList",userService.findAllErpUser());
         return "table_users";
     }
 
-    @RequestMapping("/list")
-    public String table_lists(){
-        return JSONArray.toJSONString("table_lists");
-    }
 }
