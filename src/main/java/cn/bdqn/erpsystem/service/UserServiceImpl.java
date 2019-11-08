@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService{
         return erpAll;
     }
 
+
     @Override
     public ErpUser login(String name, String password) {
         ErpUserExample ue=new ErpUserExample();
@@ -35,6 +36,14 @@ public class UserServiceImpl implements UserService{
             }
         }
         return eprUser;
+    }
+
+    @Override
+    public boolean addErpUser(ErpUser erpUser) {
+        if (erpUserMapper.insertSelective(erpUser)>0){
+            return true;
+        }
+        return false;
     }
 
     public String formatType(String type){

@@ -9,4 +9,6 @@ public interface UserService {
     List<ErpUser> findAllErpUser();
     //验证用户名
     ErpUser login(String name,String password);
+    //增加
+    boolean addErpUser(ErpUser erpUser);
 }

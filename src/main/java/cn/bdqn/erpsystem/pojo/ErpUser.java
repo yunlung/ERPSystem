@@ -1,8 +1,5 @@
 package cn.bdqn.erpsystem.pojo;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
 
 public class ErpUser {
@@ -13,19 +10,23 @@ public class ErpUser {
     private String uPassword;
 
     private String uType;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     private Date uCreatedate;
 
     private Date uBirthday;
 
+    private String uEmail;
+
+    private String uPhone;
+
+    private String uRemarks;
+
     private Integer uAge;
 
     public Integer getuAge() {
-        Date date=new Date();
-        Integer uAge=date.getYear()-uBirthday.getYear();
-        return uAge;
+        Integer age=new Date().getYear()-uBirthday.getYear();
+        return age;
     }
-
 
     public Integer getuId() {
         return uId;
@@ -52,7 +53,6 @@ public class ErpUser {
     }
 
     public String getuType() {
-
         return uType;
     }
 
@@ -74,5 +74,29 @@ public class ErpUser {
 
     public void setuBirthday(Date uBirthday) {
         this.uBirthday = uBirthday;
+    }
+
+    public String getuEmail() {
+        return uEmail;
+    }
+
+    public void setuEmail(String uEmail) {
+        this.uEmail = uEmail == null ? null : uEmail.trim();
+    }
+
+    public String getuPhone() {
+        return uPhone;
+    }
+
+    public void setuPhone(String uPhone) {
+        this.uPhone = uPhone == null ? null : uPhone.trim();
+    }
+
+    public String getuRemarks() {
+        return uRemarks;
+    }
+
+    public void setuRemarks(String uRemarks) {
+        this.uRemarks = uRemarks == null ? null : uRemarks.trim();
     }
 }
