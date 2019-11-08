@@ -89,10 +89,8 @@ function login() {
 		,"success":function(data){
 			if (data!=null) {
 				location.href="/index";
-			}else if(data==0){
-				alert("未找到此用户！");
 			}else{
-				alert("操作异常！请联系管理员");
+				alert("未找到此用户！");
 			}
 		}
 		,"error":function(){

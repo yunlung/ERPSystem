@@ -59,7 +59,7 @@
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="index.html">首页</a></li>
+                                    <li><a th:href="@{/index}">首页</a></li>
                                     <li><a href="index2.html">Dashboard2</a></li>
                                     <li><a href="index3.html">Dashboard3</a></li>
                                 </ul>
@@ -90,7 +90,7 @@
                             <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="tables.html">Tables</a></li>
-                                    <li><a th:href="@{/init}">用户管理</a></li>
+                                    <li><a th:href="@{/user/list}">用户管理</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
