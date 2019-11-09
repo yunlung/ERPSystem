@@ -11,7 +11,7 @@ function updateUser(id,obj) {
             }
         },
         error:function (e) {
-            alert("数据错误!");
+            alert("数据错误!"+e);
         }
     });
 }
@@ -28,7 +28,7 @@ function deleteUser(id,obj) {
             }
         },
         error:function (e) {
-            alert("数据错误!");
+            alert("数据错误!"+e);
         }
     });
 }
