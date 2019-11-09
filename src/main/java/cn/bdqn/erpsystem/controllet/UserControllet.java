@@ -47,9 +47,9 @@ public class UserControllet {
         model.addAttribute("addError","增加失败!");
         return "add_user";
     }
-    @RequestMapping("/getUserbyId")
+  /*  @RequestMapping("/getUserbyId")
     @ResponseBody
     public String getUserById(){
         return "";
-    }
+    }*/
 }

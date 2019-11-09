@@ -90,7 +90,7 @@ function login() {
 			if (data!=null) {
 				location.href="/index";
 			}else{
-				alert("未找到此用户！");
+				$("#loginsub").after("<span th:text='用户名或密码输入错误！' style='color: rgba(255,127,80,0.5)'></span>")
 			}
 		}
 		,"error":function(){
