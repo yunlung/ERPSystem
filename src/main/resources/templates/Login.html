@@ -1,0 +1,247 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <!--CSS-->
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: auto;
+        }
+
+        body {
+            width: 1000px;
+            height: 600px;
+            background: -webkit-linear-gradient(left, #3A97DC, #6e61cc, #8b48b1);
+        }
+
+        input {
+            border: none;
+        }
+
+        /*框*/
+        #first_div {
+            position: relative;
+            margin-top: 50px;
+            width: 450px;
+            height: 550px;
+            background: #FFFFFF;
+            border-radius: 2%;
+        }
+
+        /*Login字体*/
+        #first_Login {
+            font-size: 40px;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 155px;
+            margin-top: 50px;
+            background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(#3A97DC), to(#8b48b1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /*输入框*/
+        #username, #password {
+            font-size: 25px;
+            font-weight: bold;
+            width: 280px;
+            height: 40px;
+            margin-top: 14px;
+            margin-left: 10px;
+            outline: none;
+        }
+
+        #first_name, #first_pwd {
+            width: 300px;
+            margin-left: 70px;
+            height: 60px;
+            border-bottom: 3px solid #8b48b1;
+            transition: all 0.8s ease-in-out;
+        }
+
+        #first_name {
+            margin-top: 60px;
+        }
+
+        #first_pwd {
+            margin-top: 50px;
+        }
+
+        /*错误提示*/
+        #usernameerror, #pwderror {
+            display: inline-block;
+            font-size: 20px;
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            margin-left: 8px;
+            margin-top: 13px;
+            color: #BFccd2;
+        }
+
+        /*登录*/
+        #loginsub {
+            font-size: 20px;
+            font-weight: bold;
+            width: 300px;
+            height: 60px;
+            color: white;
+            background: -webkit-linear-gradient(left, #3A97DC, #6e61cc, #8b48b1);
+            border-radius: 10px;
+            margin-left: 70px;
+            margin-top: 75px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        #loginsub:hover {
+            background: -webkit-linear-gradient(left, #6e61cc, #8b48b1, #3A97DC);
+        }
+
+        #loginname {
+            position: absolute;
+            left: 81px;
+            top: 185px;
+            font-size: 20px;
+            transition: all 0.3s ease-in-out;
+            z-index: 1;
+            color: #ccc;
+        }
+
+        #loginpwd {
+            position: absolute;
+            left: 81px;
+            top: 297px;
+            font-size: 20px;
+            transition: all 0.3s ease-in-out;
+            z-index: 1;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+<div id="first_div">
+    <span id="first_Login">Login</span>
+    <form id="myform" name="loginform" action="javascript:void(0)">
+        <div id="first_name">
+            <input type="text" id="username" autocomplete="off" name="username"/>
+            <span id="usernameerror"></span>
+        </div>
+        <div id="first_pwd">
+            <input type="password" id="password" name="password"/>
+            <span id="pwderror"></span>
+        </div>
+        <input type="submit" value="登   录" id="loginsub" th:onclick="login()"/>
+    </form>
+    <span id="loginname">登录名</span>
+    <span id="loginpwd">密码</span>
+</div>
+<!--JS-->
+<script type="text/javascript" src="../vendors/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#username").blur(checkname);//用户名
+        $("#password").blur(checkpwd);//密码
+
+        //点击提交按钮
+        $("#loginsub").submit(function () {
+            var flg = true;
+            if (!checkname()) {
+                flg = false;
+            }
+            if (!checkpwd()) {
+                flg = false;
+            }
+            return flg;
+        });
+    });
+
+    //用户名
+    function checkname() {
+        var uname = $("#username").val();
+        //当输入错误格式
+        var nameerror = $("#usernameerror");
+        //用户名正则表达式
+        nameerror.html("");
+        var regCode = /^[A-Za-z0-9]{4,10}$/;
+        if (uname == "") {
+            nameerror.html("登录名不能为空！");
+            return false;
+        } else if (regCode.test(uname) == false) {
+            nameerror.html("由英文字母和数字组成4-10位！");
+            return false;
+        }
+        return true;
+    }
+
+    //密码
+    function checkpwd() {
+        var upwd = $("#password").val();
+        //当输入错误格式
+        var pwderror = $("#pwderror");
+        //密码正则表达式
+        pwderror.html("");
+        var regPwd = /^[A-Za-z0-9]{4,6}$/;
+        if (upwd == "") {
+            pwderror.html("密码框不能为空！");
+
+            return false;
+        } else if (regPwd.test(upwd) == false) {
+            pwderror.html("由英文字母和数字组成4-7位字符!");
+            return false;
+        }
+        return true;
+    }
+
+    $(document).ready(function () {
+        $("#username").focus(function () {
+            $("#loginname").css({"position": "absolute", "top": "164px", "font-size": "16px"});
+            $("#first_name").css("border-color", "#3A97DC");
+        });
+        $("#username").blur(function () {
+            var uname = $("#username").val();
+            if (uname == "") {
+                $("#loginname").css({"position": "absolute", "top": "185px", "font-size": "20px"});
+            } else {
+                $("#loginname").css({"position": "absolute", "top": "164px", "font-size": "16px"});
+            }
+            $("#first_name").css("border-color", "#8b48b1");
+        });
+        $("#password").focus(function () {
+            $("#loginpwd").css({"position": "absolute", "top": "276px", "font-size": "16px"});
+            $("#first_pwd").css("border-color", "#3A97DC");
+        });
+        $("#password").blur(function () {
+            var upwd = $("#password").val();
+            if (upwd == "") {
+                $("#loginpwd").css({"position": "absolute", "top": "297px", "font-size": "20px"});
+            } else {
+                $("#loginpwd").css({"position": "absolute", "top": "276px", "font-size": "16px"});
+            }
+            $("#first_pwd").css("border-color", "#8b48b1");
+        });
+    });
+    function login() {
+        var tr=$("#myform").find(":input").serialize();
+        $.ajax({
+            "url":"/login"
+            ,"type":"post"
+            ,"data":tr
+            ,"dataType":"json"
+            ,"success":function(data){
+                if (data!=null) {
+                    location.href="/index";
+                }else{
+                    alert("未找到此用户！");
+                }
+            }
+            ,"error":function(){
+                alert("数据异常");
+            }
+        });
+    }
+</script>
+</body>
+</html>
