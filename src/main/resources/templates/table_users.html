@@ -104,7 +104,7 @@
                                         <td th:text="${ErpUser.uEmail}"/>
                                         <td th:text="${ErpUser.uPhone}"/>
                                         <td th:text="${ErpUser.uRemarks}"/>
-                                        <td><a href="javascript:void(0)" th:onclick="|javascript:updateUser('${ErpUser.uId}',this)|">修改</a> </td>
+                                        <td><a th:href="@{/user/getUserbyId(uId=${ErpUser.uId})}">修改</a> </td>
                                         <td><a href="javascript:void(0)" th:onclick="|javascript:deleteUser('${ErpUser.uId}',this)|">删除</a></td>
                                     </tr>
                                     </tbody>

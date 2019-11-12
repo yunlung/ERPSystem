@@ -11,4 +11,10 @@ public interface UserService {
     ErpUser login(String name,String password);
     //增加
     boolean addErpUser(ErpUser erpUser);
+    //id查询用户
+    ErpUser findUserById(String uId);
+    //修改
+    boolean updateErpUser(ErpUser erpUser);
+    //删除
+    boolean deleteErpUserById(Integer uId);
 }

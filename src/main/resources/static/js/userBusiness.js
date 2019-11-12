@@ -1,28 +1,27 @@
 function updateUser(id,obj) {
     $.ajax({
-        "url":"/getUserbyId",
+        "url":"/user/getUserbyId",
         "data":{"uId":id},
         "type":"post",
         "dataType":"json",
         success:function (data) {
-            if (date!=null){
                 // $(obj).parent().remove();
-                location.href="/user/toAdd";
-            }
+                request.setAttribute("erpUser",data);
+                location.href="/user/updateUser";
         },
-        error:function (e) {
-            alert("数据错误!"+e);
+        error:function () {
+            alert("数据错误!");
         }
     });
 }
 function deleteUser(id,obj) {
     $.ajax({
-        "url":"/delete",
+        "url":"/user/deleteErpUserById",
         "data":{"uId":id},
         "type":"get",
         "dataType":"json",
         success:function (data) {
-            if (date!=null){
+            if (data==true){
                 $(obj).parent().parent().remove();
                 // location.href="/user/toAdd";
             }

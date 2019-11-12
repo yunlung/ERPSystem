@@ -3,7 +3,6 @@ package cn.bdqn.erpsystem.service;
 import cn.bdqn.erpsystem.dao.ErpUserMapper;
 import cn.bdqn.erpsystem.pojo.ErpUser;
 import cn.bdqn.erpsystem.pojo.ErpUserExample;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -46,6 +45,30 @@ public class UserServiceImpl implements UserService{
         return false;
     }
 
+
+
+    @Override
+    public boolean updateErpUser(ErpUser erpUser) {
+        if (erpUserMapper.updateByPrimaryKeySelective(erpUser)>0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public ErpUser findUserById(String uId) {
+        ErpUserExample ue=new ErpUserExample();
+        ErpUserExample.Criteria criteria= ue.createCriteria();
+        criteria.andUIdEqualTo(Integer.valueOf(uId));
+        return erpUserMapper.selectByExample(ue).get(0);
+    }
+    @Override
+    public boolean deleteErpUserById(Integer uId) {
+        if (erpUserMapper.deleteByPrimaryKey(uId)>0){
+            return true;
+        }
+        return false;
+    }
     public String formatType(String type){
         String returnType="";
         switch (type){
