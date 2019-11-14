@@ -50,5 +50,10 @@
 
         <!-- 指定数据库表 -->
         <table tableName="erp_user"></table>
+        <table tableName="pur_apply"></table>
+        <table tableName="pur_person"></table>
+        <table tableName="pur_provider"></table>
+        <table tableName="pur_purchaseorder"></table>
+        <table tableName="pur_section"></table>
     </context>
 </generatorConfiguration>

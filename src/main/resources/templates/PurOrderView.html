@@ -1,0 +1,145 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DataTables | Gentelella</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Form validation <small>sub title</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--<li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>-->
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content" >
+                <form class="form-horizontal form-label-left" method="post" th:each="pur:${purOrder}" >
+                    <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
+                    </p>
+                    <span class="section">采购订单详细</span>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_Order">采购订单号：<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="p_Order" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" th:value="${pur.pOrder}" readonly="readonly" name="p_Order" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_Name">采购货物名称：<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="p_Name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6"  data-validate-words="2" th:value="${pur.pName}" readonly="readonly" name="p_Name" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_Number">采购数量： <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" id="p_Number" name="p_Number"  th:value="${pur.pNumber}" readonly="readonly"  class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_Money">交易金额： <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" id="p_Money" name="p_Money" th:value="${pur.pMoney}" readonly="readonly"  class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_Date">采购时间： <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="date" id="p_Date" name="p_Date" th:value="${pur.pDate}" readonly="readonly"  class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_Person">采购人员：<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="p_Person" name="p_Person" class="form-control col-md-7 col-xs-12" disabled="disabled">
+                                <option value="1" th:selected="${pur.pPerson}==1?true:false">杨芸汐</option>
+                                <option value="2" th:selected="${pur.pPerson}==2?true:false">夏愧</option>
+                                <option value="3" th:selected="${pur.pPerson}==3?true:false">宋雁枫</option>
+                                <option value="4" th:selected="${pur.pPerson}==4?true:false">张盈盈</option>
+                                <option value="5" th:selected="${pur.pPerson}==5?true:false">凌旭</option>
+                                <option value="6" th:selected="${pur.pPerson}==6?true:false">张凯</option>
+                                <option value="8" th:selected="${pur.pPerson}==8?true:false">王懿轩</option>
+                                <option value="9" th:selected="${pur.pPerson}==9?true:false">蒋泽</option>
+                                <option value="10" th:selected="${pur.pPerson}==10?true:false">赵明诚</option>
+                                <option value="11" th:selected="${pur.pPerson}==11?true:false">戴璐洁</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_ProviderId">供应商：<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select id="p_ProviderId" name="p_ProviderId" class="form-control col-md-7 col-xs-12" disabled="disabled" >
+                                <option value="1" th:selected="${pur.pProviderid}==1?true:false">北京三木堂电子有限公司</option>
+                                <option value="2" th:selected="${pur.pProviderid}==2?true:false">石家庄帅益电子有限公司</option>
+                                <option value="3" th:selected="${pur.pProviderid}==3?true:false">深圳市泰香电子有限公司</option>
+                                <option value="4" th:selected="${pur.pProviderid}==4?true:false">深圳市喜来客电子有限公司</option>
+                                <option value="5" th:selected="${pur.pProviderid}==5?true:false">兴化佳美电子厂</option>
+                                <option value="6" th:selected="${pur.pProviderid}==6?true:false">北京纳福尔电子有限公司</option>
+                                <option value="7" th:selected="${pur.pProviderid}==7?true:false">北京国粮电子有限公司</option>
+                                <option value="8" th:selected="${pur.pProviderid}==8?true:false">慈溪市广和电子厂</option>
+                                <option value="9" th:selected="${pur.pProviderid}==9?true:false">上海捷诚科技有限公司</option>
+                                <option value="10" th:selected="${pur.pProviderid}==10?true:false">武汉利诚电子有限公司</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_Remarks">备注： <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="p_Remarks" type="text" name="p_Remarks" th:value="${pur.pRemarks}" readonly="readonly" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button id="exit" onclick="javascript:history.back()"  type="button" class="btn btn-success">上一步</button>
+                        </div>
+                    </div>
+                </form>
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+
+</body>
+</html>

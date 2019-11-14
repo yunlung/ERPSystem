@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bdqn.erpsystem.dao.PurProviderMapper" >
+  <resultMap id="BaseResultMap" type="cn.bdqn.erpsystem.pojo.PurProvider" >
+    <id column="pro_Id" property="proId" jdbcType="INTEGER" />
+    <result column="pro_Code" property="proCode" jdbcType="VARCHAR" />
+    <result column="pro_Name" property="proName" jdbcType="VARCHAR" />
+    <result column="pro_Address" property="proAddress" jdbcType="VARCHAR" />
+    <result column="pro_Person" property="proPerson" jdbcType="VARCHAR" />
+    <result column="pro_Tel" property="proTel" jdbcType="VARCHAR" />
+    <result column="pro_Remarks" property="proRemarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pro_Id, pro_Code, pro_Name, pro_Address, pro_Person, pro_Tel, pro_Remarks
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.bdqn.erpsystem.pojo.PurProviderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pur_provider
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pur_provider
+    where pro_Id = #{proId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pur_provider
+    where pro_Id = #{proId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.bdqn.erpsystem.pojo.PurProviderExample" >
+    delete from pur_provider
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.bdqn.erpsystem.pojo.PurProvider" >
+    insert into pur_provider (pro_Id, pro_Code, pro_Name, 
+      pro_Address, pro_Person, pro_Tel, 
+      pro_Remarks)
+    values (#{proId,jdbcType=INTEGER}, #{proCode,jdbcType=VARCHAR}, #{proName,jdbcType=VARCHAR}, 
+      #{proAddress,jdbcType=VARCHAR}, #{proPerson,jdbcType=VARCHAR}, #{proTel,jdbcType=VARCHAR}, 
+      #{proRemarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.bdqn.erpsystem.pojo.PurProvider" >
+    insert into pur_provider
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="proId != null" >
+        pro_Id,
+      </if>
+      <if test="proCode != null" >
+        pro_Code,
+      </if>
+      <if test="proName != null" >
+        pro_Name,
+      </if>
+      <if test="proAddress != null" >
+        pro_Address,
+      </if>
+      <if test="proPerson != null" >
+        pro_Person,
+      </if>
+      <if test="proTel != null" >
+        pro_Tel,
+      </if>
+      <if test="proRemarks != null" >
+        pro_Remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="proId != null" >
+        #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="proCode != null" >
+        #{proCode,jdbcType=VARCHAR},
+      </if>
+      <if test="proName != null" >
+        #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="proAddress != null" >
+        #{proAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="proPerson != null" >
+        #{proPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="proTel != null" >
+        #{proTel,jdbcType=VARCHAR},
+      </if>
+      <if test="proRemarks != null" >
+        #{proRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.bdqn.erpsystem.pojo.PurProviderExample" resultType="java.lang.Integer" >
+    select count(*) from pur_provider
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update pur_provider
+    <set >
+      <if test="record.proId != null" >
+        pro_Id = #{record.proId,jdbcType=INTEGER},
+      </if>
+      <if test="record.proCode != null" >
+        pro_Code = #{record.proCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proName != null" >
+        pro_Name = #{record.proName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proAddress != null" >
+        pro_Address = #{record.proAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proPerson != null" >
+        pro_Person = #{record.proPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proTel != null" >
+        pro_Tel = #{record.proTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.proRemarks != null" >
+        pro_Remarks = #{record.proRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update pur_provider
+    set pro_Id = #{record.proId,jdbcType=INTEGER},
+      pro_Code = #{record.proCode,jdbcType=VARCHAR},
+      pro_Name = #{record.proName,jdbcType=VARCHAR},
+      pro_Address = #{record.proAddress,jdbcType=VARCHAR},
+      pro_Person = #{record.proPerson,jdbcType=VARCHAR},
+      pro_Tel = #{record.proTel,jdbcType=VARCHAR},
+      pro_Remarks = #{record.proRemarks,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.erpsystem.pojo.PurProvider" >
+    update pur_provider
+    <set >
+      <if test="proCode != null" >
+        pro_Code = #{proCode,jdbcType=VARCHAR},
+      </if>
+      <if test="proName != null" >
+        pro_Name = #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="proAddress != null" >
+        pro_Address = #{proAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="proPerson != null" >
+        pro_Person = #{proPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="proTel != null" >
+        pro_Tel = #{proTel,jdbcType=VARCHAR},
+      </if>
+      <if test="proRemarks != null" >
+        pro_Remarks = #{proRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pro_Id = #{proId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bdqn.erpsystem.pojo.PurProvider" >
+    update pur_provider
+    set pro_Code = #{proCode,jdbcType=VARCHAR},
+      pro_Name = #{proName,jdbcType=VARCHAR},
+      pro_Address = #{proAddress,jdbcType=VARCHAR},
+      pro_Person = #{proPerson,jdbcType=VARCHAR},
+      pro_Tel = #{proTel,jdbcType=VARCHAR},
+      pro_Remarks = #{proRemarks,jdbcType=VARCHAR}
+    where pro_Id = #{proId,jdbcType=INTEGER}
+  </update>
+</mapper>

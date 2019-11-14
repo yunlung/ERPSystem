@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bdqn.erpsystem.dao.PurPurchaseorderMapper" >
+  <resultMap id="BaseResultMap" type="cn.bdqn.erpsystem.pojo.PurPurchaseorder" >
+    <id column="p_Id" property="pId" jdbcType="INTEGER" />
+    <result column="p_Order" property="pOrder" jdbcType="VARCHAR" />
+    <result column="p_Name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_Number" property="pNumber" jdbcType="INTEGER" />
+    <result column="p_Money" property="pMoney" jdbcType="DOUBLE" />
+    <result column="p_Date" property="pDate" jdbcType="DATE" />
+    <result column="p_Person" property="pPerson" jdbcType="INTEGER" />
+    <result column="p_ProviderId" property="pProviderid" jdbcType="INTEGER" />
+    <result column="p_ProductionId" property="pProductionid" jdbcType="INTEGER" />
+    <result column="p_WarehouseId" property="pWarehouseid" jdbcType="INTEGER" />
+    <result column="p_Remarks" property="pRemarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    p_Id, p_Order, p_Name, p_Number, p_Money, p_Date, p_Person, p_ProviderId, p_ProductionId, 
+    p_WarehouseId, p_Remarks
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.bdqn.erpsystem.pojo.PurPurchaseorderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pur_purchaseorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pur_purchaseorder
+    where p_Id = #{pId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pur_purchaseorder
+    where p_Id = #{pId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.bdqn.erpsystem.pojo.PurPurchaseorderExample" >
+    delete from pur_purchaseorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.bdqn.erpsystem.pojo.PurPurchaseorder" >
+    insert into pur_purchaseorder (p_Id, p_Order, p_Name, 
+      p_Number, p_Money, p_Date, 
+      p_Person, p_ProviderId, p_ProductionId, 
+      p_WarehouseId, p_Remarks)
+    values (#{pId,jdbcType=INTEGER}, #{pOrder,jdbcType=VARCHAR}, #{pName,jdbcType=VARCHAR}, 
+      #{pNumber,jdbcType=INTEGER}, #{pMoney,jdbcType=DOUBLE}, #{pDate,jdbcType=DATE}, 
+      #{pPerson,jdbcType=INTEGER}, #{pProviderid,jdbcType=INTEGER}, #{pProductionid,jdbcType=INTEGER}, 
+      #{pWarehouseid,jdbcType=INTEGER}, #{pRemarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.bdqn.erpsystem.pojo.PurPurchaseorder" >
+    insert into pur_purchaseorder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        p_Id,
+      </if>
+      <if test="pOrder != null" >
+        p_Order,
+      </if>
+      <if test="pName != null" >
+        p_Name,
+      </if>
+      <if test="pNumber != null" >
+        p_Number,
+      </if>
+      <if test="pMoney != null" >
+        p_Money,
+      </if>
+      <if test="pDate != null" >
+        p_Date,
+      </if>
+      <if test="pPerson != null" >
+        p_Person,
+      </if>
+      <if test="pProviderid != null" >
+        p_ProviderId,
+      </if>
+      <if test="pProductionid != null" >
+        p_ProductionId,
+      </if>
+      <if test="pWarehouseid != null" >
+        p_WarehouseId,
+      </if>
+      <if test="pRemarks != null" >
+        p_Remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pId != null" >
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="pOrder != null" >
+        #{pOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pNumber != null" >
+        #{pNumber,jdbcType=INTEGER},
+      </if>
+      <if test="pMoney != null" >
+        #{pMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="pDate != null" >
+        #{pDate,jdbcType=DATE},
+      </if>
+      <if test="pPerson != null" >
+        #{pPerson,jdbcType=INTEGER},
+      </if>
+      <if test="pProviderid != null" >
+        #{pProviderid,jdbcType=INTEGER},
+      </if>
+      <if test="pProductionid != null" >
+        #{pProductionid,jdbcType=INTEGER},
+      </if>
+      <if test="pWarehouseid != null" >
+        #{pWarehouseid,jdbcType=INTEGER},
+      </if>
+      <if test="pRemarks != null" >
+        #{pRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.bdqn.erpsystem.pojo.PurPurchaseorderExample" resultType="java.lang.Integer" >
+    select count(*) from pur_purchaseorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update pur_purchaseorder
+    <set >
+      <if test="record.pId != null" >
+        p_Id = #{record.pId,jdbcType=INTEGER},
+      </if>
+      <if test="record.pOrder != null" >
+        p_Order = #{record.pOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pName != null" >
+        p_Name = #{record.pName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pNumber != null" >
+        p_Number = #{record.pNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.pMoney != null" >
+        p_Money = #{record.pMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pDate != null" >
+        p_Date = #{record.pDate,jdbcType=DATE},
+      </if>
+      <if test="record.pPerson != null" >
+        p_Person = #{record.pPerson,jdbcType=INTEGER},
+      </if>
+      <if test="record.pProviderid != null" >
+        p_ProviderId = #{record.pProviderid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pProductionid != null" >
+        p_ProductionId = #{record.pProductionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pWarehouseid != null" >
+        p_WarehouseId = #{record.pWarehouseid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pRemarks != null" >
+        p_Remarks = #{record.pRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update pur_purchaseorder
+    set p_Id = #{record.pId,jdbcType=INTEGER},
+      p_Order = #{record.pOrder,jdbcType=VARCHAR},
+      p_Name = #{record.pName,jdbcType=VARCHAR},
+      p_Number = #{record.pNumber,jdbcType=INTEGER},
+      p_Money = #{record.pMoney,jdbcType=DOUBLE},
+      p_Date = #{record.pDate,jdbcType=DATE},
+      p_Person = #{record.pPerson,jdbcType=INTEGER},
+      p_ProviderId = #{record.pProviderid,jdbcType=INTEGER},
+      p_ProductionId = #{record.pProductionid,jdbcType=INTEGER},
+      p_WarehouseId = #{record.pWarehouseid,jdbcType=INTEGER},
+      p_Remarks = #{record.pRemarks,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.bdqn.erpsystem.pojo.PurPurchaseorder" >
+    update pur_purchaseorder
+    <set >
+      <if test="pOrder != null" >
+        p_Order = #{pOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="pName != null" >
+        p_Name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pNumber != null" >
+        p_Number = #{pNumber,jdbcType=INTEGER},
+      </if>
+      <if test="pMoney != null" >
+        p_Money = #{pMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="pDate != null" >
+        p_Date = #{pDate,jdbcType=DATE},
+      </if>
+      <if test="pPerson != null" >
+        p_Person = #{pPerson,jdbcType=INTEGER},
+      </if>
+      <if test="pProviderid != null" >
+        p_ProviderId = #{pProviderid,jdbcType=INTEGER},
+      </if>
+      <if test="pProductionid != null" >
+        p_ProductionId = #{pProductionid,jdbcType=INTEGER},
+      </if>
+      <if test="pWarehouseid != null" >
+        p_WarehouseId = #{pWarehouseid,jdbcType=INTEGER},
+      </if>
+      <if test="pRemarks != null" >
+        p_Remarks = #{pRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where p_Id = #{pId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.bdqn.erpsystem.pojo.PurPurchaseorder" >
+    update pur_purchaseorder
+    set p_Order = #{pOrder,jdbcType=VARCHAR},
+      p_Name = #{pName,jdbcType=VARCHAR},
+      p_Number = #{pNumber,jdbcType=INTEGER},
+      p_Money = #{pMoney,jdbcType=DOUBLE},
+      p_Date = #{pDate,jdbcType=DATE},
+      p_Person = #{pPerson,jdbcType=INTEGER},
+      p_ProviderId = #{pProviderid,jdbcType=INTEGER},
+      p_ProductionId = #{pProductionid,jdbcType=INTEGER},
+      p_WarehouseId = #{pWarehouseid,jdbcType=INTEGER},
+      p_Remarks = #{pRemarks,jdbcType=VARCHAR}
+    where p_Id = #{pId,jdbcType=INTEGER}
+  </update>
+</mapper>
