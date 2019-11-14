@@ -57,6 +57,7 @@ public class UserControllet {
         ErpUser erpUser = userService.findUserById(uId);
         model.addAttribute("erpUser",erpUser);
         System.out.println("获取用户===========>"+erpUser.getuName());
+        System.out.println("获取类型===========>"+erpUser.getuType());
         return "update_user";
     }
     /*//转到用户修改

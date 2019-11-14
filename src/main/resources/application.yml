@@ -2,15 +2,21 @@ server:
   port: 8080
 
 spring:
+#  jackson:
+    #参数意义：
+    #JsonInclude.Include.ALWAYS       默认
+    #JsonInclude.Include.NON_DEFAULT   属性为默认值不序列化
+    #JsonInclude.Include.NON_EMPTY     属性为 空（””） 或者为 NULL 都不序列化
+    #JsonInclude.Include.NON_NULL      属性为NULL  不序列化
+#    default-property-inclusion: ALWAYS
+#    time-zone: GMT+8
+#    date-format: yyyy-MM-dd HH:mm:ss
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/erpsystemdb?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
 #    日期格式化
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
 #  thymeleaf:
 #    prefix: classpath:/templates/
 #    suffix: .html

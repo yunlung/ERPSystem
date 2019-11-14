@@ -100,7 +100,7 @@
                                         <td th:text="${ErpUser.uName}"/>
                                         <td th:text="${ErpUser.uType}"/>
                                         <td th:text="${ErpUser.uAge}"/>
-                                        <td th:text="${ErpUser.uCreatedate}"/>
+                                        <td th:text="${#dates.format(ErpUser.uCreatedate,'yyyy-MM-dd')}"/>
                                         <td th:text="${ErpUser.uEmail}"/>
                                         <td th:text="${ErpUser.uPhone}"/>
                                         <td th:text="${ErpUser.uRemarks}"/>

@@ -101,9 +101,9 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select id="u_type" name="uType" class="form-control col-md-7 col-xs-12">
-                                                <option value="1" th:selected="${erpUser.uType==1?true:false}">系统管理员</option>
-                                                <option value="2" th:selected="${erpUser.uType==1?true:false}">部门主管</option>
-                                                <option value="3" th:selected="${erpUser.uType==1?true:false}">部门文员</option>
+                                                <option value="1" th:selected="${erpUser.uType}==1?true:false">系统管理员</option>
+                                                <option value="2" th:selected="${erpUser.uType}==2?true:false">部门主管</option>
+                                                <option value="3" th:selected="${erpUser.uType}==3?true:false">部门文员</option>
                                             </select>
                                             <!--<input type="number" id="number" name="number" required="required" data-validate-minmax="1,3" class="form-control col-md-7 col-xs-12">-->
                                         </div>
@@ -124,13 +124,13 @@
                                     </div>-->
 
                                     <div class="item form-group">
-                                        <label for="password" class="control-label col-md-3">密码 </label>
+                                        <label for="password" class="control-label col-md-3">密码 </label><span class="required">*</span>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input id="password" type="password" name="password" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required" th:value="${erpUser!=null?erpUser.uPassword:''}">
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">确认密码 </label>
+                                        <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">确认密码 </label><span class="required">*</span>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
                                         </div>
@@ -143,16 +143,16 @@
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">备注 <span class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">备注 <span class="required"></span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <textarea id="textarea" required="required" name="uRemarks" class="form-control col-md-7 col-xs-12" th:value="${erpUser!=null?erpUser.uRemarks:''}"></textarea>
+                                            <textarea id="textarea" name="uRemarks" class="form-control col-md-7 col-xs-12" th:value="${erpUser!=null?erpUser.uRemarks:''}"></textarea>
                                         </div>
                                     </div>
                                     <div class="item form-group">
                                         <label for="password" class="control-label col-md-3">出生日期 </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" Class="Wdate" id="birthday" name="birthday" readonly="readonly"  th:onclick="WdatePicker()" th:value="${erpUser!=null?erpUser.uBirthday:''}">
+                                            <input type="text" Class="Wdate" id="birthday" name="birthday" readonly="readonly"  th:onclick="WdatePicker()" th:value="${erpUser!=null?#dates.format(erpUser.uBirthday,'yyyy-MM-dd'):''}">
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
