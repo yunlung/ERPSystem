@@ -552,6 +552,16 @@ public class PurPurchaseorderExample {
             return (Criteria) this;
         }
 
+        public Criteria andPPersonLike(String value) {
+            addCriterion("p_Person like", value, "pPerson");
+            return (Criteria) this;
+        }
+
+        public Criteria andPPersonNotLike(String value) {
+            addCriterion("p_Person not like", value, "pPerson");
+            return (Criteria) this;
+        }
+
         public Criteria andPPersonIn(List<String> values) {
             addCriterion("p_Person in", values, "pPerson");
             return (Criteria) this;
@@ -609,6 +619,16 @@ public class PurPurchaseorderExample {
 
         public Criteria andPProvideridLessThanOrEqualTo(String value) {
             addCriterion("p_ProviderId <=", value, "pProviderid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPProvideridLike(String value) {
+            addCriterion("p_ProviderId like", value, "pProviderid");
+            return (Criteria) this;
+        }
+
+        public Criteria andPProvideridNotLike(String value) {
+            addCriterion("p_ProviderId not like", value, "pProviderid");
             return (Criteria) this;
         }
 

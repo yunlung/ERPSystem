@@ -27,10 +27,4 @@ public interface PurPurchaseorderMapper {
     int updateByPrimaryKeySelective(PurPurchaseorder record);
 
     int updateByPrimaryKey(PurPurchaseorder record);
-
-    /*金额排序*/
-    List<PurPurchaseorder> selectByMoney();
-
-    /*日期排序*/
-    List<PurPurchaseorder> selectByDate();
 }

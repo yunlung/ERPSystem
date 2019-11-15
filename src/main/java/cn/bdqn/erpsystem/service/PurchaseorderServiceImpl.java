@@ -23,9 +23,7 @@ public class PurchaseorderServiceImpl implements PurchaseorderService {
     public List<PurPurchaseorder> selectByExample(PurPurchaseorderExample example) {
         PurPurchaseorderExample ue=new PurPurchaseorderExample();
         List<PurPurchaseorder> purList=purOrderMapper.selectByExample(ue);
-        for (PurPurchaseorder purOrder:purList) {
-            purOrder.setpPerson(formatType(purOrder.getpPerson()));
-        }
+
         return purList;
     }
 
@@ -74,58 +72,6 @@ public class PurchaseorderServiceImpl implements PurchaseorderService {
         }else {
             return 0;
         }
-    }
-
-    @Override
-    public List<PurPurchaseorder> selectByMoney() {
-        List<PurPurchaseorder> purList = purOrderMapper.selectByMoney();
-        System.out.println(purList);
-        return purList;
-    }
-
-    @Override
-    public List<PurPurchaseorder> selectByDate() {
-        List<PurPurchaseorder>  purList = purOrderMapper.selectByDate();
-        System.out.println(purList);
-        return purList;
-    }
-
-    /*采购人员*/
-    public String formatType(String type){
-        String returnType="";
-        switch (type){
-            case "1":
-                returnType= "杨芸汐";
-                break;
-            case "2":
-                returnType= "夏愧";
-                break;
-            case "3":
-                returnType= "宋雁枫";
-                break;
-            case "4":
-                returnType= "张盈盈";
-                break;
-            case "5":
-                returnType= "凌旭";
-                break;
-            case "6":
-                returnType= "张凯";
-                break;
-            case "8":
-                returnType= "王懿轩";
-                break;
-            case "9":
-                returnType= "蒋泽";
-                break;
-            case "10":
-                returnType= "赵明诚";
-                break;
-            case "11":
-                returnType= "戴璐洁";
-                break;
-        }
-        return returnType;
     }
 
 

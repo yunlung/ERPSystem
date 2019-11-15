@@ -35,19 +35,20 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search for...">
                                 <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">Go!</button>
-                          </span>
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="clearfix"></div>
 
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Form validation <small>sub title</small></h2>
+                                <h2>Form validation<small>sub title</small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -67,59 +68,61 @@
                             </div>
                 <div class="x_content">
 
-                    <form class="form-horizontal form-label-left" id="myform" action="/purOrder/addPurOrder" method="post">
+                    <form class="form-horizontal form-label-left" id="myform" action="/indent/addPro" method="post">
                         <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
                         </p>
-                        <span class="section">添加采购订单</span>
+                        <span class="section">添加生产订单</span>
 
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">采购货物名称： <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">订单人姓名： <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="name" class="form-control col-md-7 col-xs-12" autocomplete="off" data-validate-length-range="6"  name="p_Name" required="required" type="text">
+                                <input id="name" class="form-control col-md-7 col-xs-12" autocomplete="off" name="name" required="required" type="text">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">采购数量： <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name1">订单名称： <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" id="number" name="p_Number"  required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="text" id="name1" name="goods"  required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number1">交易金额： <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">订单数量： <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="number" id="number1" name="p_Money"  required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="number" id="number" name="counts"  required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_Person">采购人员：<span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number1">订单人电话：<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select id="p_Person" name="p_Person"  class="form-control col-md-7 col-xs-12">
-                                <option th:value="0">--请选择--</option>
-                                <option th:each="per:${perList}" th:value="${per.personid}" th:text="${per.personname}"></option>
-                            </select>
+                            <input type="text" id="number1" name="phone"  required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_ProviderId">供应商：<span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">订单人地址：<span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select id="p_ProviderId" name="p_ProviderId"  class="form-control col-md-7 col-xs-12">
-                                    <option th:value="0">--请选择--</option>
-                                    <option th:each="pro:${proList}" th:value="${pro.proId}" th:text="${pro.proName}"></option>
-                                </select>
+                                <input type="text" id="address" name="address"  required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="p_Remarks">备注： <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="datetime">下单时间： <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="p_Remarks" type="text" name="p_Remarks" autocomplete="off" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                                <input id="datetime" type="date" name="datetime" autocomplete="off" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
                             </div>
                         </div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="datetimeos">取货时间： <span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="datetimeos" type="date" name="datetimeos" autocomplete="off" data-validate-length-range="5,20" class="optional form-control col-md-7 col-xs-12">
+                    </div>
+                </div>
+
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
@@ -133,15 +136,15 @@
             </div>
         </div>
     </div>
-    </div>
-        !-- /page content -->
+</div>
+        </div>
+        <!-- /page content -->
 
         <!-- footer content -->
         <div th:insert="~{index :: footer}"></div>
         <!-- /footer content -->
+        </div>
     </div>
-</div>
-</div>
   <!-- jQuery -->
   <script src="../vendors/jquery/dist/jquery-1.12.4.js"></script>
   <!-- jQuery -->

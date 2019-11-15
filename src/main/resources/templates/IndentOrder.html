@@ -1,0 +1,210 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DataTables | Gentelella</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{../vendors/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link th:href="@{../vendors/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <!-- NProgress -->
+    <link th:href="@{../vendors/nprogress/nprogress.css}" rel="stylesheet">
+    <!-- iCheck -->
+    <link th:href="@{../vendors/iCheck/skins/flat/green.css}" rel="stylesheet">
+    <!-- Datatables -->
+    <link th:href="@{../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link th:href="@{../build/css/custom.min.css}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div th:insert="~{index :: header}"></div>
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>Production <small>Some examples to get you started</small></h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Default Example <small>Users</small></h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#">Settings 1</a>
+                                            </li>
+                                            <li><a href="#">Settings 2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                    <!--<div class="x_content">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-sm-6">-->
+                                <!--<div class="dataTables_length" id="datatable_length">-->
+                                    <!--<label>Show <select name="datatable_length" aria-controls="datatable" class="form-control input-sm">-->
+                                        <!--<option value="10">10</option>-->
+                                        <!--<option value="25">25</option>-->
+                                        <!--<option value="50">50</option>-->
+                                        <!--<option value="100">100</option>-->
+                                    <!--</select></label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-6">-->
+                                <!--<div id="datatable_filter" class="dataTables_filter">-->
+                                    <!--<label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="datatable">-->
+                                    <!--</label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <table id="datatable" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>订单编号</th>
+                                <th>订单人姓名</th>
+                                <th>订单物品</th>
+                                <th>订单数量</th>
+                                <th>订单人电话</th>
+                                <th>订单地址</th>
+                                <th>下单时间</th>
+                                <th>取货时间</th>
+                                <th>修改</th>
+                                <th>删除</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                           <tr th:each="Indent,memberStat:${indentList}">
+                                <td th:text="${Indent.id}"/>
+                                <td th:text="${Indent.name}"/>
+                                <td th:text="${Indent.goods}"/>
+                                <td th:text="${Indent.counts}"/>
+                                <td th:text="${Indent.phone}"/>
+                                <td th:text="${Indent.address}"/>
+                                <td th:text="${Indent.datetime}"/>
+                                <td th:text="${Indent.datetimeos}"/>
+                               <td><a th:href="@{/indent/updatePro(uId=${Indent.id})}">修改</a> </td>
+                                <!--<td><a href="javascript:void(0)" th:onclick="|javascript:deleteUser('${Indent.id}',this)|">删除</a></td>-->
+                               <td><a href=" " th:onclick="'javascript:delOrder('+${Indent.id}+','+this+');'">删除</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-5">
+
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <div th:insert="~{index :: footer}"></div>
+        <!-- /footer content -->
+
+</div>
+
+</div>
+
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
+<!-- Datatables -->
+<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+<script src="../vendors/jszip/dist/jszip.min.js"></script>
+<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+<script src="../js/userBusiness.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+        <script type="text/javascript">
+            function delOrder(id,obj){
+                if(confirm("删除点击确认！")){
+                    $.ajax({
+                        "url":"/indent/delOrder"
+                        ,"data":{"id":id}
+                        ,"type":"post"
+                        ,"dataType":"json"
+                        ,"success":function(data){
+                            if (data) {
+                                alert("删除成功！");
+                                $(obj).parent().parent().remove();
+                            }else{
+                                alert("删除失败！");
+                            }
+                        }
+                        ,"error":function(){
+                            alert("服务异常！");
+                        }
+                    });
+                }
+            }
+        </script>
+</body>
+</html>

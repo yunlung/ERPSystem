@@ -23,9 +23,5 @@ public interface PurchaseorderService {
     int deleteByPrimaryKey(Integer pId);
 
 
-    /*金额排序*/
-    List<PurPurchaseorder> selectByMoney();
 
-    /*日期排序*/
-    List<PurPurchaseorder> selectByDate();
 }

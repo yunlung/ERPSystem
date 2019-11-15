@@ -8,8 +8,8 @@
     <result column="p_Number" property="pNumber" jdbcType="INTEGER" />
     <result column="p_Money" property="pMoney" jdbcType="DOUBLE" />
     <result column="p_Date" property="pDate" jdbcType="DATE" />
-    <result column="p_Person" property="pPerson" jdbcType="INTEGER" />
-    <result column="p_ProviderId" property="pProviderid" jdbcType="INTEGER" />
+    <result column="p_Person" property="pPerson" jdbcType="VARCHAR" />
+    <result column="p_ProviderId" property="pProviderid" jdbcType="VARCHAR" />
     <result column="p_ProductionId" property="pProductionid" jdbcType="INTEGER" />
     <result column="p_WarehouseId" property="pWarehouseid" jdbcType="INTEGER" />
     <result column="p_Remarks" property="pRemarks" jdbcType="VARCHAR" />
@@ -113,7 +113,7 @@
       p_WarehouseId, p_Remarks)
     values (#{pId,jdbcType=INTEGER}, #{pOrder,jdbcType=VARCHAR}, #{pName,jdbcType=VARCHAR}, 
       #{pNumber,jdbcType=INTEGER}, #{pMoney,jdbcType=DOUBLE}, #{pDate,jdbcType=DATE}, 
-      #{pPerson,jdbcType=INTEGER}, #{pProviderid,jdbcType=INTEGER}, #{pProductionid,jdbcType=INTEGER}, 
+      #{pPerson,jdbcType=VARCHAR}, #{pProviderid,jdbcType=VARCHAR}, #{pProductionid,jdbcType=INTEGER}, 
       #{pWarehouseid,jdbcType=INTEGER}, #{pRemarks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.bdqn.erpsystem.pojo.PurPurchaseorder" >
@@ -173,10 +173,10 @@
         #{pDate,jdbcType=DATE},
       </if>
       <if test="pPerson != null" >
-        #{pPerson,jdbcType=INTEGER},
+        #{pPerson,jdbcType=VARCHAR},
       </if>
       <if test="pProviderid != null" >
-        #{pProviderid,jdbcType=INTEGER},
+        #{pProviderid,jdbcType=VARCHAR},
       </if>
       <if test="pProductionid != null" >
         #{pProductionid,jdbcType=INTEGER},
@@ -217,10 +217,10 @@
         p_Date = #{record.pDate,jdbcType=DATE},
       </if>
       <if test="record.pPerson != null" >
-        p_Person = #{record.pPerson,jdbcType=INTEGER},
+        p_Person = #{record.pPerson,jdbcType=VARCHAR},
       </if>
       <if test="record.pProviderid != null" >
-        p_ProviderId = #{record.pProviderid,jdbcType=INTEGER},
+        p_ProviderId = #{record.pProviderid,jdbcType=VARCHAR},
       </if>
       <if test="record.pProductionid != null" >
         p_ProductionId = #{record.pProductionid,jdbcType=INTEGER},
@@ -244,8 +244,8 @@
       p_Number = #{record.pNumber,jdbcType=INTEGER},
       p_Money = #{record.pMoney,jdbcType=DOUBLE},
       p_Date = #{record.pDate,jdbcType=DATE},
-      p_Person = #{record.pPerson,jdbcType=INTEGER},
-      p_ProviderId = #{record.pProviderid,jdbcType=INTEGER},
+      p_Person = #{record.pPerson,jdbcType=VARCHAR},
+      p_ProviderId = #{record.pProviderid,jdbcType=VARCHAR},
       p_ProductionId = #{record.pProductionid,jdbcType=INTEGER},
       p_WarehouseId = #{record.pWarehouseid,jdbcType=INTEGER},
       p_Remarks = #{record.pRemarks,jdbcType=VARCHAR}
@@ -272,10 +272,10 @@
         p_Date = #{pDate,jdbcType=DATE},
       </if>
       <if test="pPerson != null" >
-        p_Person = #{pPerson,jdbcType=INTEGER},
+        p_Person = #{pPerson,jdbcType=VARCHAR},
       </if>
       <if test="pProviderid != null" >
-        p_ProviderId = #{pProviderid,jdbcType=INTEGER},
+        p_ProviderId = #{pProviderid,jdbcType=VARCHAR},
       </if>
       <if test="pProductionid != null" >
         p_ProductionId = #{pProductionid,jdbcType=INTEGER},
@@ -296,8 +296,8 @@
       p_Number = #{pNumber,jdbcType=INTEGER},
       p_Money = #{pMoney,jdbcType=DOUBLE},
       p_Date = #{pDate,jdbcType=DATE},
-      p_Person = #{pPerson,jdbcType=INTEGER},
-      p_ProviderId = #{pProviderid,jdbcType=INTEGER},
+      p_Person = #{pPerson,jdbcType=VARCHAR},
+      p_ProviderId = #{pProviderid,jdbcType=VARCHAR},
       p_ProductionId = #{pProductionid,jdbcType=INTEGER},
       p_WarehouseId = #{pWarehouseid,jdbcType=INTEGER},
       p_Remarks = #{pRemarks,jdbcType=VARCHAR}

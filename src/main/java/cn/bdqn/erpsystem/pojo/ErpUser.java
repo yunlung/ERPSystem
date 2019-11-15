@@ -1,37 +1,27 @@
 package cn.bdqn.erpsystem.pojo;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.CancellationException;
 
 public class ErpUser {
-    private Integer uId;//编号
+    private Integer uId;
 
-    private String uName;//姓名
+    private String uName;
 
-    private String uPassword;//密码
+    private String uPassword;
 
-    private String uType;//类型
+    private String uType;
 
-    private Date uCreatedate;//创建时间
+    private Date uCreatedate;
 
-    private Date uBirthday;//生日
+    private Date uBirthday;
 
-    private String uEmail;//邮箱
+    private String uEmail;
 
-    private String uPhone;//联系方式
+    private String uPhone;
 
-    private String uRemarks;//备注
+    private String uRemarks;
 
-    private Integer uAge;//年龄
-
-    public Integer getuAge() {
-        Calendar instance = Calendar.getInstance();
-        int yearNow=instance.get(Calendar.YEAR);
-        instance.setTime(uBirthday);
-        Integer yearBirthday=instance.get(Calendar.YEAR);
-        return yearNow-yearBirthday;
-    }
+    private Integer uAge;
 
     public Integer getuId() {
         return uId;
@@ -103,5 +93,13 @@ public class ErpUser {
 
     public void setuRemarks(String uRemarks) {
         this.uRemarks = uRemarks == null ? null : uRemarks.trim();
+    }
+
+    public Integer getuAge() {
+        return uAge;
+    }
+
+    public void setuAge(Integer uAge) {
+        this.uAge = uAge;
     }
 }

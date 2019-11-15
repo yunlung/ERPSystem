@@ -78,7 +78,7 @@ public class PurPurchaseorder {
     }
 
     public void setpPerson(String pPerson) {
-        this.pPerson = pPerson;
+        this.pPerson = pPerson == null ? null : pPerson.trim();
     }
 
     public String getpProviderid() {
@@ -86,7 +86,7 @@ public class PurPurchaseorder {
     }
 
     public void setpProviderid(String pProviderid) {
-        this.pProviderid = pProviderid;
+        this.pProviderid = pProviderid == null ? null : pProviderid.trim();
     }
 
     public Integer getpProductionid() {
